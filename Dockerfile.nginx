@@ -1,0 +1,8 @@
+ARG CLI_IMAGE
+FROM ${CLI_IMAGE} as cli
+
+FROM algmprivsecops/moodle_nginx:latest 
+
+COPY --from=cli /app /app
+
+ENV WEBROOT=public
